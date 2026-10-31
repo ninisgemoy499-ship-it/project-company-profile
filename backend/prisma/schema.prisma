@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           BigInt     @id @default(autoincrement()) @db.UnsignedBigInt
+  name         String     @db.VarChar(120)
+  email        String     @unique @db.VarChar(190)
+  passwordHash String     @map("password_hash") @db.VarChar(255)
+  role         UserRole   @default(editor)
+  blogPosts    BlogPost[]
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model CompanyProfile {
+  id         BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  name       String   @db.VarChar(120)
+  descriptor String   @db.VarChar(180)
+  headline   String   @db.VarChar(255)
+  intro      String   @db.Text
+  email      String   @db.VarChar(190)
+  location   String   @db.VarChar(190)
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("company_profile")
+}
+
+model Service {
+  id          BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  title       String   @db.VarChar(160)
+  description String   @db.Text
+  sortOrder   Int      @default(0) @map("sort_order")
+  isPublished Boolean  @default(true) @map("is_published")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("services")
+}
+
+model PortfolioProject {
+  id          BigInt        @id @default(autoincrement()) @db.UnsignedBigInt
+  title       String        @db.VarChar(160)
+  client      String        @db.VarChar(160)
+  description String?       @db.Text
+  category    String        @db.VarChar(120)
+  imageUrl    String?       @map("image_url") @db.VarChar(500)
+  status      ProjectStatus @default(draft)
+  publishedAt DateTime?     @map("published_at")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  @@map("portfolio_projects")
+}
+
+model BlogPost {
+  id          BigInt     @id @default(autoincrement()) @db.UnsignedBigInt
+  title       String     @db.VarChar(220)
+  slug        String     @unique @db.VarChar(240)
+  excerpt     String?    @db.Text
+  content     String     @db.LongText
+  status      BlogStatus @default(draft)
+  publishedAt DateTime?  @map("published_at")
+  authorId    BigInt     @map("author_id") @db.UnsignedBigInt
+  author      User       @relation(fields: [authorId], references: [id])
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  @@map("blog_posts")
+}
+
+model ContactMessage {
+  id        BigInt        @id @default(autoincrement()) @db.UnsignedBigInt
+  name      String        @db.VarChar(160)
+  email     String        @db.VarChar(190)
+  company   String?       @db.VarChar(160)
+  message   String        @db.Text
+  status    MessageStatus @default(unread)
+  createdAt DateTime      @default(now()) @map("created_at")
+
+  @@map("contact_messages")
+}
+
+enum UserRole {
+  admin
+  editor
+}
+
+enum ProjectStatus {
+  draft
+  review
+  published
+}
+
+enum BlogStatus {
+  draft
+  published
+}
+
+enum MessageStatus {
+  unread
+  read
+  archived
+}

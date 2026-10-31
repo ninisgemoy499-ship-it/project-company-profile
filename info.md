@@ -1,0 +1,1 @@
+[plugin:vite:import-analysis] Failed to resolve import "../styles/admin.css" from "src/layouts/AdminLayout.j

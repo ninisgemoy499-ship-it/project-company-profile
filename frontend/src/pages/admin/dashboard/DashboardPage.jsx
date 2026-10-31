@@ -1,0 +1,20 @@
+import { activity, dashboardStats, recentProjects } from '../../../features/admin/mockData'
+
+function StatCard({ stat }) {
+  return <article className="dashboard-stat"><div className="stat-label">{stat.label}<span className="stat-menu">•••</span></div><strong>{stat.value}</strong><span className={`stat-change ${stat.trend}`}>↗ {stat.change}</span></article>
+}
+
+export function DashboardPage({ user }) {
+  return (
+    <div className="dashboard-page">
+      <header className="admin-topbar"><div><p className="admin-eyebrow">Saturday, 15 February 2025</p><h1>Good morning, {user.name.split(' ')[0]} <span>✦</span></h1></div><div className="topbar-actions"><button className="icon-button" type="button" aria-label="Notifications">◌<i /></button><a className="admin-view-site" href="/">View site ↗</a></div></header>
+      <section className="dashboard-intro"><div><p className="admin-eyebrow">Overview</p><h2>Here&apos;s what&apos;s happening.</h2></div><button className="primary-action" type="button">+ Add new <span>⌄</span></button></section>
+      <section className="dashboard-stats">{dashboardStats.map((stat) => <StatCard key={stat.label} stat={stat} />)}</section>
+      <section className="dashboard-grid">
+        <article className="panel traffic-panel"><div className="panel-heading"><div><p className="admin-eyebrow">Performance</p><h3>Site traffic</h3></div><button className="select-button" type="button">Last 30 days⌄</button></div><div className="traffic-total"><strong>18,420</strong><span>visitors <b>+18.7%</b></span></div><div className="chart"><div className="chart-y"><span>2k</span><span>1.5k</span><span>1k</span><span>0</span></div><div className="chart-area"><div className="chart-grid-lines"><i /><i /><i /><i /></div><svg viewBox="0 0 640 220" preserveAspectRatio="none" aria-label="Site traffic trend"><defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#d7f63b" stopOpacity=".45" /><stop offset="1" stopColor="#d7f63b" stopOpacity="0" /></linearGradient></defs><path d="M0 180 C50 170 62 118 110 133 S165 168 210 112 S260 130 300 92 S350 117 390 67 S440 96 475 52 S530 91 565 42 S610 60 640 25 V220 H0Z" fill="url(#chartFill)" /><path d="M0 180 C50 170 62 118 110 133 S165 168 210 112 S260 130 300 92 S350 117 390 67 S440 96 475 52 S530 91 565 42 S610 60 640 25" fill="none" stroke="#a1bb16" strokeWidth="3" /></svg><div className="chart-labels"><span>Jan 17</span><span>Jan 24</span><span>Jan 31</span><span>Feb 07</span><span>Feb 14</span></div></div></div></article>
+        <article className="panel activity-panel"><div className="panel-heading"><div><p className="admin-eyebrow">Timeline</p><h3>Recent activity</h3></div><a className="panel-link" href="/admin/messages">View all ↗</a></div><div className="activity-list">{activity.map((item) => <div className="activity-item" key={item.title}><span className={`activity-icon ${item.type}`}>{item.type === 'message' ? '◌' : item.type === 'project' ? '◫' : '◒'}</span><div><strong>{item.title}</strong><p>{item.detail}</p></div><time>{item.time}</time></div>)}</div></article>
+      </section>
+      <section className="panel projects-panel"><div className="panel-heading"><div><p className="admin-eyebrow">Portfolio</p><h3>Recent projects</h3></div><a className="panel-link" href="/admin/portfolio">Manage portfolio ↗</a></div><div className="project-table"><div className="table-row table-header"><span>Project</span><span>Status</span><span>Last updated</span><span /></div>{recentProjects.map((project) => <div className="table-row" key={project.name}><div className="table-project"><span className={`project-swatch ${project.color}`} /><span><strong>{project.name}</strong><small>{project.client}</small></span></div><span className={`status-pill ${project.status === 'Published' ? 'published' : 'review'}`}><i />{project.status}</span><span className="table-date">{project.date}</span><span className="row-more">•••</span></div>)}</div></section>
+    </div>
+  )
+}
