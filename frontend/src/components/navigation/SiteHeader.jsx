@@ -7,7 +7,7 @@ export function SiteHeader({ company }) {
 
   return (
     <header className="site-header">
-      <a className="brand" href="#top" aria-label={`${company.name} home`}>
+      <a className="brand" href="/#top" aria-label={`${company.name} home`}>
         <span className="brand-mark">N</span>
         <span>{company.name}</span>
       </a>
@@ -16,13 +16,13 @@ export function SiteHeader({ company }) {
         <span className="menu-lines" aria-hidden="true"><i /><i /></span>
       </button>
       <nav id="main-navigation" className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Public navigation">
-        <a href="#top" onClick={closeMenu}>Home</a>
-        <a href="#about" onClick={closeMenu}>Profil</a>
-        <a href="#work" onClick={closeMenu}>Product</a>
-        <a href="#services" onClick={closeMenu}>Service</a>
-        <a href="#services" onClick={closeMenu}>Rental</a>
-        <a href="#artikel" onClick={closeMenu}>Artikel</a>
-        <a className="nav-contact" href="#contact" onClick={closeMenu}>Kontak <Arrow /></a>
+        <a href="/#top" onClick={closeMenu}>Home</a>
+        <a href="/#about" onClick={closeMenu}>Profil</a>
+        <a href="/#work" onClick={closeMenu}>Product</a>
+        <a href="/#services" onClick={closeMenu}>Service</a>
+        <a href="/#rental" onClick={closeMenu}>Rental</a>
+        <a href="/#artikel" onClick={closeMenu}>Artikel</a>
+        <a className="nav-contact" href="/#contact" onClick={closeMenu}>Kontak <Arrow /></a>
       </nav>
     </header>
   )

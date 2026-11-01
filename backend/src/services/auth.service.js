@@ -1,17 +1,25 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import { z } from 'zod'
 import { env } from '../config/env.js'
 import { userRepository } from '../repositories/user.repository.js'
 
+const loginSchema = z.object({
+  email: z.string().trim().email('A valid email is required'),
+  password: z.string().min(1, 'Password is required'),
+})
+
 export const authService = {
-  async login({ email, password }) {
-    if (typeof email !== 'string' || typeof password !== 'string' || !email.trim() || !password) {
-      const error = new Error('Email and password are required')
+  async login(input) {
+    const parsedInput = loginSchema.safeParse(input)
+    if (!parsedInput.success) {
+      const error = new Error(parsedInput.error.issues[0]?.message || 'Email and password are required')
       error.statusCode = 400
       throw error
     }
 
-    const user = await userRepository.findByEmail(email)
+    const { email, password } = parsedInput.data
+    const user = await userRepository.findByEmail(email.toLowerCase())
     const validPassword = user && await bcrypt.compare(password, user.passwordHash)
     if (!validPassword) {
       const error = new Error('Invalid email or password')

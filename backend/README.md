@@ -35,8 +35,34 @@ API tersedia di `http://localhost:4000`.
 
 - `GET /health`
 - `GET /api/v1/public/profile`
+- `POST /api/v1/public/contact-messages` untuk mengirim pesan dari website
 - `POST /api/v1/auth/login`
 - `GET /api/v1/admin/dashboard` dengan header `Authorization: Bearer <token>`
+- `GET/PATCH /api/v1/admin/profile`
+- `GET/POST/PATCH/DELETE /api/v1/admin/pages`
+- `GET/POST/PATCH/DELETE /api/v1/admin/services`
+- `GET/POST/PATCH/DELETE /api/v1/admin/projects`
+- `GET/POST/PATCH/DELETE /api/v1/admin/posts`
+- `GET/POST/DELETE /api/v1/admin/media`
+- `GET/PUT/DELETE /api/v1/admin/settings`
+- `GET/PATCH/DELETE /api/v1/admin/users`
+- `GET/PATCH/DELETE /api/v1/admin/messages`
+- `GET /api/v1/contact-messages` dengan header `Authorization: Bearer <token>`
+- `GET /api/v1/contact-messages/:id` dengan header `Authorization: Bearer <token>`
+- `PATCH /api/v1/contact-messages/:id` dengan header `Authorization: Bearer <token>`
+- `DELETE /api/v1/contact-messages/:id` dengan header `Authorization: Bearer <token>`
+
+## Contact messages dengan XAMPP
+
+Pastikan MySQL pada XAMPP berjalan, lalu buat database `northstar_company`.
+Isi `DATABASE_URL` pada `.env`, kemudian jalankan:
+
+```bash
+npm run prisma:generate
+npm run db:push
+```
+
+Data contact message akan disimpan pada tabel `contact_messages`.
 
 ## Login seed development
 

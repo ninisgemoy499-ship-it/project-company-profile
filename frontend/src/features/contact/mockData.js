@@ -1,8 +1,17 @@
 export const company = {
   name: 'Northstar',
   descriptor: 'Brand & digital studio',
-  headline: 'Make your next move impossible to ignore.',
-  intro: 'We build distinct brands and digital experiences for ambitious teams ready to change the conversation.',
+  headline: 'solusi kenyaman berkendara secara eksklusif? Di rental Yahoo aja',
+  headlineLead: 'solusi kenyaman berkendara secara eksklusif?',
+  headlineLeadFirst: 'solusi kenyaman berkendara',
+  headlineLeadSecond: 'secara eksklusif?',
+  headlineAccent: 'Di rental Yahoo aja',
+  intro: 'Nikmati pengalaman berkendara yang nyaman, aman, dan terpercaya bersama layanan rental mobil kami. We provide premium-quality vehicles with professional service to make every journey more comfortable, exclusive, and memorable. Your comfort is our priority!',
+  introLines: [
+    'Nikmati pengalaman berkendara yang nyaman, aman, dan terpercaya bersama layanan rental mobil kami.',
+    'We provide premium-quality vehicles with professional service to make every journey more comfortable,',
+    'exclusive, and memorable. Your comfort is our priority!',
+  ],
   email: 'hello@northstar.studio',
   location: 'Jakarta · Singapore · Everywhere',
 }

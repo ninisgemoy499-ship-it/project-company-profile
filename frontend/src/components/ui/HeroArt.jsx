@@ -1,11 +1,7 @@
 export function HeroArt() {
   return (
-    <div className="hero-art" aria-label="Abstract green sculpture">
-      <div className="sun-disc" />
-      <div className="art-shape art-shape-one" />
-      <div className="art-shape art-shape-two" />
-      <div className="art-grid" />
-      <span className="art-caption">Northstar / 001</span>
+    <div className="hero-art" aria-label="McLaren sport car">
+      <img src="https://cdn.setirkanan.co.id/images/2024/05/30/1c62b40058a60abbd9eb7b4ffe24c862816e7c4b/mclaren.webp" alt="McLaren sport car" />
     </div>
   )
 }

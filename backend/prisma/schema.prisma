@@ -110,3 +110,42 @@ enum MessageStatus {
   read
   archived
 }
+
+model Page {
+  id          BigInt     @id @default(autoincrement()) @db.UnsignedBigInt
+  title       String     @db.VarChar(180)
+  slug        String     @unique @db.VarChar(200)
+  content     String     @db.LongText
+  status      PageStatus @default(draft)
+  publishedAt DateTime?  @map("published_at")
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  @@map("pages")
+}
+
+model MediaAsset {
+  id        BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  name      String   @db.VarChar(180)
+  url       String   @db.VarChar(500)
+  mimeType  String   @map("mime_type") @db.VarChar(120)
+  sizeBytes Int      @default(0) @map("size_bytes")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("media_assets")
+}
+
+model SiteSetting {
+  id        BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  key       String   @unique @db.VarChar(120)
+  value     String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("site_settings")
+}
+
+enum PageStatus {
+  draft
+  published
+}
