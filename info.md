@@ -1,1 +1,1 @@
-Nikmati pengalaman berkendara yang nyaman, aman, dan terpercaya bersama layanan rental mobil kami. We provide premium-quality vehicles with professional service to make every journey more comfortable, exclusive, and memorable. Your comfort is our priority!
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVA6ASaj7AThFg26nnkQK7Wvi3WHSMePKsL_JnH8tLM-s2iv_Xr6Q86dmr&s=10

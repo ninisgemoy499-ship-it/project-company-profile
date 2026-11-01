@@ -14,11 +14,11 @@ async function seed() {
 
   await prisma.companyProfile.upsert({
     where: { id: 1n },
-    update: { headline: 'solusi kenyaman berkendara secara eksklusif? Di rental Yahoo aja' },
+    update: { headline: 'solusi kenyamanan berkendara secara eksklusif? Di rental Yahoo aja' },
     create: {
       name: 'Northstar',
       descriptor: 'Brand & digital studio',
-      headline: 'solusi kenyaman berkendara secara eksklusif? Di rental Yahoo aja',
+      headline: 'solusi kenyamanan berkendara secara eksklusif? Di rental Yahoo aja',
       intro: 'Nikmati pengalaman berkendara yang nyaman, aman, dan terpercaya bersama layanan rental mobil kami. We provide premium-quality vehicles with professional service to make every journey more comfortable, exclusive, and memorable. Your comfort is our priority!',
       email: 'hello@northstar.studio',
       location: 'Jakarta · Singapore · Everywhere',
@@ -47,8 +47,8 @@ async function seed() {
   if (await prisma.portfolioProject.count() === 0) {
     await prisma.portfolioProject.createMany({
       data: [
-        { title: 'Form / Function', client: 'Morrow Objects', category: 'Brand identity · Digital', imageUrl: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85', status: 'published' },
-        { title: 'Aster House', client: 'Aster Hospitality', category: 'Strategy · Experience', imageUrl: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85', status: 'review' },
+        { title: 'Lamborghini Veneno Roadster', client: 'Morrow Objects', category: 'Brand identity · Digital', imageUrl: 'mobil.jpg', status: 'published' },
+        { title: 'Mclaren 720s', client: 'Aster Hospitality', category: 'Strategy · Experience', imageUrl: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85', status: 'review' },
       ],
     })
   }
