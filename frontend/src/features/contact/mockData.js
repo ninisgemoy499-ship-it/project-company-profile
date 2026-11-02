@@ -17,7 +17,7 @@ export const company = {
 }
 
 export const testimonial = {
-  quote: 'Northstar found the thing we were trying to say before we had the words for it. The work gave our whole team a new sense of direction.',
-  name: 'Maya Pranoto',
+  quote: 'Our premium cars make every journey unforgettable, delivering comfort, style, and an exclusive driving experience.',
+  name: 'ninis euy',
   role: 'Founder, Mclaren 720s',
 }
